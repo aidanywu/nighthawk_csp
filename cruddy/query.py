@@ -109,11 +109,6 @@ def authorize(name, email, password, phone):
         return True
 
 
-# logout user
-def logout():
-    logout_user()  # removes login state of user from session
-
-
 # Test some queries from implementations above
 if __name__ == "__main__":
 
