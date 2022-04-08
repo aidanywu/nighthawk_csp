@@ -100,9 +100,9 @@
 
         <div class="btn-group">
             <!-- Search Box -->
-            <div class="px-3">
-                <input id="search" type="search" placeholder="Search" aria-label="Search">
-            </div>
+{#            <div class="px-3">#}
+{#                <input id="search" type="search" placeholder="Search" aria-label="Search">#}
+{#            </div>#}
             <!-- Clock display -->
             <div class="px-3 text-dark">
                 <span id="clock"></span>
@@ -111,6 +111,16 @@
             <div class="form-check form-switch">
                 <input type="checkbox" onclick="darkFunction()" class="form-check-input" id="darkSwitch">
                 <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+            </div>
+            <div class="px-3 text-dark">
+                {% if current_user['name']|length != 0 %}
+                    <p>Logged in as <b>{{ current_user['name'] }}</b></p>
+                    <form action={{url_for('crud.logout')}}>
+                        <input type="submit" value="Logout">
+                    </form>
+                {% else %}
+                    <p style="font-size:30px"><a href={{ url_for('crud.crud_login') }}>Log in</a></p>
+                {% endif %}
             </div>
         </div>
 
